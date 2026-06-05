@@ -11,16 +11,25 @@ public class Derivacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "codigo_anonimo", unique = true, nullable = false)
+    private String codigoAnonimo;
+
     private String pacienteRut;
-    private String especialidadDestino; // Ej: GINECOLOGIA, OBSTETRICIA
+    private String especialidadDestino; 
     private String motivo;
     private LocalDate fechaCreacion;
-    private String estado;              // Ej: PENDIENTE, ATENDIDA
+    private String estado;            
 
     public Derivacion() {}
 
+   
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
+
+    
+    public String getCodigoAnonimo() { return codigoAnonimo; }
+    public void setCodigoAnonimo(String codigoAnonimo) { this.codigoAnonimo = codigoAnonimo; }
 
     public String getPacienteRut() { return pacienteRut; }
     public void setPacienteRut(String pacienteRut) { this.pacienteRut = pacienteRut; }

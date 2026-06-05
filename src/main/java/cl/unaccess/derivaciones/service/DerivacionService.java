@@ -6,6 +6,7 @@ import cl.unaccess.derivaciones.repository.DerivacionRepository;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.UUID; 
 
 @Service
 public class DerivacionService {
@@ -18,11 +19,14 @@ public class DerivacionService {
 
     public Derivacion crearDerivacion(DerivacionDTO dto) {
         Derivacion d = new Derivacion();
+        
+        String uuidAnonimo = UUID.randomUUID().toString();
+        d.setCodigoAnonimo(uuidAnonimo);
+
         d.setPacienteRut(dto.getPacienteRut());
         d.setEspecialidadDestino(dto.getEspecialidadDestino());
         d.setMotivo(dto.getMotivo());
         
-        // Automatizaciones requeridas para la rúbrica
         d.setFechaCreacion(LocalDate.now());
         d.setEstado("PENDIENTE");
 
